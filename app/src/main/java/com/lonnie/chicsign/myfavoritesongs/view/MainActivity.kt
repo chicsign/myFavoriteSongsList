@@ -1,7 +1,8 @@
-package com.lonnie.chicsign.myfavoritesongs
+package com.lonnie.chicsign.myfavoritesongs.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.lonnie.chicsign.myfavoritesongs.R
 
 class MainActivity : AppCompatActivity() {
 

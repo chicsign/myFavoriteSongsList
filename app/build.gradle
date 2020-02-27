@@ -65,6 +65,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
     implementation 'org.mockito:mockito-core:3.0.0'
     implementation 'org.mockito:mockito-inline:3.0.0'
     testImplementation 'android.arch.core:core-testing:1.1.1'

@@ -17,4 +17,6 @@ class Post {
     var lyricWriter = ""
 
     var company = ""
+
+    var writeTime:Any = Any()
 }

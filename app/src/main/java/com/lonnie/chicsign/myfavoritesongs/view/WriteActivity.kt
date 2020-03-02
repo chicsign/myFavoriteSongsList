@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.lonnie.chicsign.myfavoritesongs.R
 import com.lonnie.chicsign.myfavoritesongs.model.Post
 import kotlinx.android.synthetic.main.activity_write.*
@@ -49,7 +50,7 @@ class WriteActivity : AppCompatActivity() {
             post.songWriter = edtSongWriter.text.toString()
             post.lyricWriter = edtLyricWriter.text.toString()
             post.company = edtCompany.text.toString()
-
+            post.writeTime = ServerValue.TIMESTAMP
             newRef.setValue(post)
 
             Toast.makeText(applicationContext, "저장 되었습니다.", Toast.LENGTH_SHORT).show()

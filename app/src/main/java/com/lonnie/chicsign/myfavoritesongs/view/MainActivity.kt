@@ -2,39 +2,32 @@ package com.lonnie.chicsign.myfavoritesongs.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.size
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.firebase.database.*
-import com.lonnie.chicsign.myfavoritesongs.R
-import com.lonnie.chicsign.myfavoritesongs.model.Post
+import com.lonnie.chicsign.myfavoritesongs.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_song_list.view.*
+import com.lonnie.chicsign.myfavoritesongs.R
+import com.lonnie.chicsign.myfavoritesongs.data.Post
+
+val posts = ArrayList<Post>()
 
 class MainActivity : AppCompatActivity() {
 
-    val TAG = "MainActivity"
-
-    val posts: MutableList<Post> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(
+            this,
+            R.layout.activity_main
+        )
         floatingActionButton.setOnClickListener {
             val intent = Intent(this, WriteActivity::class.java)
             startActivity(intent)
         }
 
-        val layoutManager = LinearLayoutManager(this)
-        layoutManager.reverseLayout = true
-        layoutManager.stackFromEnd = true
 
-        songList.layoutManager = layoutManager
-        songList.adapter = SongListAdapter()
 
         FirebaseDatabase.getInstance().getReference("Posts").orderByChild("writeTime")
             .addChildEventListener(
@@ -50,15 +43,15 @@ class MainActivity : AppCompatActivity() {
                                 val existIndex = posts.map { it.postId }.indexOf(post.postId)
 
                                 posts.removeAt(existIndex)
-                                songList.adapter?.notifyItemRemoved(existIndex)
+                                recyclerView.adapter?.notifyItemRemoved(existIndex)
 
                                 if (prevChildKey == null) {
                                     posts.add(post)
-                                    songList.adapter?.notifyItemChanged(posts.size - 1)
+                                    recyclerView.adapter?.notifyItemChanged(posts.size - 1)
                                 } else {
                                     val prevIndex = posts.map { it.postId }.indexOf(prevChildKey)
                                     posts.add(prevIndex + 1, post)
-                                    songList.adapter?.notifyItemChanged(prevIndex + 1)
+                                    recyclerView.adapter?.notifyItemChanged(prevIndex + 1)
                                 }
                             }
                         }
@@ -72,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                             post?.let { post ->
                                 val prevIndex = posts.map { it.postId }.indexOf(prevChildKey)
                                 posts[prevIndex + 1] = post
-                                songList.adapter?.notifyItemChanged(prevIndex + 1)
+                                recyclerView.adapter?.notifyItemChanged(prevIndex + 1)
                             }
                         }
                     }
@@ -83,11 +76,11 @@ class MainActivity : AppCompatActivity() {
                             post?.let {
                                 if (prevChildKey == null) {
                                     posts.add(it)
-                                    songList.adapter?.notifyItemInserted(posts.size - 1)
+                                    recyclerView.adapter?.notifyItemInserted(posts.size - 1)
                                 } else {
                                     val prevIndex = posts.map { it.postId }.indexOf(prevChildKey)
                                     posts.add(prevIndex + 1, post)
-                                    songList.adapter?.notifyItemInserted(prevIndex + 1)
+                                    recyclerView.adapter?.notifyItemInserted(prevIndex + 1)
                                 }
                             }
                         }
@@ -101,56 +94,18 @@ class MainActivity : AppCompatActivity() {
                             post?.let { post ->
                                 val existIndex = posts.map { it.postId }.indexOf(post.postId)
                                 posts.removeAt(existIndex)
-                                songList.adapter?.notifyItemRemoved(existIndex)
+                                recyclerView.adapter?.notifyItemRemoved(existIndex)
                             }
                         }
                     }
                 })
-    }
 
-    inner class myViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val adapter = RecyclerAdapter(posts)
 
-        val songNumberTxt = itemView.songNumber
-
-        val songTitleTxt = itemView.songTitle
-
-        val singerTxt = itemView.singer
-
-        val songWriterTxt = itemView.songWriter
-
-        val lyricWriterTxt = itemView.lyricWriter
-
-        val companyTxt = itemView.company
-
-    }
-
-    inner class SongListAdapter : RecyclerView.Adapter<myViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
-            return myViewHolder(
-                LayoutInflater.from(this@MainActivity).inflate(
-                    R.layout.item_song_list,
-                    parent,
-                    false
-                )
-            )
-        }
-
-        override fun getItemCount(): Int {
-            return posts.size
-        }
-
-        override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-            val post = posts[position]
-
-            holder.songNumberTxt.text = post.songNumber
-            holder.songTitleTxt.text = post.songTitle
-            holder.singerTxt.text = post.singer
-            holder.songWriterTxt.text = post.songWriter
-            holder.lyricWriterTxt.text = post.lyricWriter
-            holder.companyTxt.text = post.company
-
-        }
-
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        )
     }
 }
 

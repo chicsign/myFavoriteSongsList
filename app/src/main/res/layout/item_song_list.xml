@@ -1,61 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="4dp"
-    app:cardUseCompatPadding="true">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="postItem"
+            type="com.lonnie.chicsign.myfavoritesongs.data.Post" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="@{postItem::onClickListener}"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp">
+
+        <TextView
+            android:id="@+id/postId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{postItem.postId}"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/writeId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{postItem.writeId}"
+            android:textSize="20sp" />
+
 
         <TextView
             android:id="@+id/songNumber"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:text="@{postItem.songNumber}"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/songTitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:text="@{postItem.songTitle}"
             android:textSize="20sp" />
 
 
         <TextView
             android:id="@+id/singer"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:text="@{postItem.singer}"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/songWriter"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:text="@{postItem.songWriter}"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lyricWriter"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:text="@{postItem.lyricWriter}"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/company"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:text="@{postItem.company}"
             android:textSize="20sp" />
 
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+
+</layout>

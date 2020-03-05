@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.lonnie.chicsign.myfavoritesongs.R
-import com.lonnie.chicsign.myfavoritesongs.model.Post
+import com.lonnie.chicsign.myfavoritesongs.data.Post
 import kotlinx.android.synthetic.main.activity_write.*
 
 class WriteActivity : AppCompatActivity() {

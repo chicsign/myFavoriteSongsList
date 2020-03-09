@@ -7,7 +7,7 @@
 
         <variable
             name="postItem"
-            type="com.lonnie.chicsign.myfavoritesongs.data.Post" />
+            type="com.lonnie.chicsign.myfavoritesongs.model.Info" />
     </data>
 
     <LinearLayout

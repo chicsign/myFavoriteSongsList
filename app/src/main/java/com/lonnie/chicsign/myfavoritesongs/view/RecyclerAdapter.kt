@@ -1,21 +1,28 @@
 package com.lonnie.chicsign.myfavoritesongs.view
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.lonnie.chicsign.myfavoritesongs.R
-import com.lonnie.chicsign.myfavoritesongs.data.Post
+import com.lonnie.chicsign.myfavoritesongs.model.Info
 import com.lonnie.chicsign.myfavoritesongs.databinding.ItemSongListBinding
 
 
-class RecyclerAdapter(private val items: MutableList<Post>) :
+class RecyclerAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
-    override fun getItemCount() = items.size
+    private var dataList = mutableListOf<Info>()
+
+    fun setListData(data:MutableList<Info>){
+        dataList = data
+    }
+
+    override fun getItemCount() = dataList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items[position]
+        val item = dataList[position]
         holder.apply {
             bind(item)
             itemView.tag = item
@@ -35,7 +42,7 @@ class RecyclerAdapter(private val items: MutableList<Post>) :
         private val binding: ItemSongListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Post) {
+        fun bind(item: Info) {
             binding.apply {
                 postItem = item
             }

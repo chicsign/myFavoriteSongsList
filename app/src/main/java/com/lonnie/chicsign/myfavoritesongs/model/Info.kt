@@ -4,7 +4,8 @@ import android.view.View
 import android.widget.Toast
 
 data class Info(
-    val postId: String = "",
+    var postId: String = "",
+
     var writeId: String = "",
 
     var songNumber: String = "",

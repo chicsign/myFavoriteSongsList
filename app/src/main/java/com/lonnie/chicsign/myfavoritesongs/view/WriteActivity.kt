@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.lonnie.chicsign.myfavoritesongs.R
+import com.lonnie.chicsign.myfavoritesongs.model.Info
 import kotlinx.android.synthetic.main.activity_write.*
 
 class WriteActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ class WriteActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val post = Post()
+            val post = Info()
 
             val newRef = FirebaseDatabase.getInstance().getReference("Posts").push()
 

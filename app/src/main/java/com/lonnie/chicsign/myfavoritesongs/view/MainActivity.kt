@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
         observerData()
+        updateUI()
         binding.mSwipeRefresh.setOnRefreshListener {
             observerData()
             if(binding.mSwipeRefresh.isRefreshing)
@@ -48,11 +49,15 @@ class MainActivity : AppCompatActivity() {
         viewModel.fetchInfo().observe(this, Observer {
             adapter.setListData(it)
             adapter.notifyDataSetChanged()
-            if(adapter.isEmptyListItem())
-                txtEmptyList.visibility = View.VISIBLE
-            else
-                txtEmptyList.visibility = View.GONE
+            updateUI()
         })
+    }
+
+    private fun updateUI(){
+        if(adapter.isEmptyListItem())
+            txtEmptyList.visibility = View.VISIBLE
+        else
+            txtEmptyList.visibility = View.GONE
     }
 }
 

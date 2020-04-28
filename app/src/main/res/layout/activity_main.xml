@@ -42,7 +42,7 @@
             android:id="@+id/txtEmptyList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="리스트가 비어있습니다."
+            android:text="@string/empty_list"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

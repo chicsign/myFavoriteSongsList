@@ -38,6 +38,10 @@ class RecyclerAdapter(private val context: Context) :
         )
     }
 
+    fun isEmptyListItem(): Boolean {
+        return dataList.size < 1
+    }
+
     class ViewHolder(
         private val binding: ItemSongListBinding
     ) : RecyclerView.ViewHolder(binding.root) {

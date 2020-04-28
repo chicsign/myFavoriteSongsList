@@ -1,3 +1,4 @@
 <resources>
-<string name="app_name">애창곡 리스트</string>
+    <string name="app_name">애창곡 리스트</string>
+    <string name="empty_list">저장된 노래가 없습니다.\n애창곡을 추가해 주세요.</string>
 </resources>

@@ -2,6 +2,7 @@ package com.lonnie.chicsign.myfavoritesongs.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -36,12 +37,21 @@ class MainActivity : AppCompatActivity() {
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
         observerData()
+        binding.mSwipeRefresh.setOnRefreshListener {
+            observerData()
+            if(binding.mSwipeRefresh.isRefreshing)
+                binding.mSwipeRefresh.isRefreshing = false
+        }
     }
 
     private fun observerData() {
         viewModel.fetchInfo().observe(this, Observer {
             adapter.setListData(it)
             adapter.notifyDataSetChanged()
+            if(adapter.isEmptyListItem())
+                txtEmptyList.visibility = View.VISIBLE
+            else
+                txtEmptyList.visibility = View.GONE
         })
     }
 }

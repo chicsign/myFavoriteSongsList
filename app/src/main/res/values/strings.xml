@@ -1,3 +1,4 @@
 <resources>
-<string name="app_name">MyFavoriteSongs</string>
+    <string name="app_name">MyFavoriteSongs</string>
+    <string name="empty_list">There are no saved songs.\nPlease add your favorite song.</string>
 </resources>

@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(){
+        //TODO: 시점 차이가 생겨서 서버에서 디비를 다 받은 후 보내야함.
         if(adapter.isEmptyListItem())
             txtEmptyList.visibility = View.VISIBLE
         else

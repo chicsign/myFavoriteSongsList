@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="postItem"
             type="com.lonnie.chicsign.myfavoritesongs.model.Info" />
@@ -22,6 +21,7 @@
         android:paddingBottom="15dp">
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/postId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +29,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/writeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

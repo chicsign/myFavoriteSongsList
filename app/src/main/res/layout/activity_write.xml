@@ -4,60 +4,143 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edtSongNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="number" />
 
-    <EditText
-        android:id="@+id/edtSongTitle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="title" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edtSinger"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="singer" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="28dp"
+            android:paddingTop="33dp"
+            android:paddingRight="28dp"
+            android:paddingBottom="33dp">
 
-    <EditText
-        android:id="@+id/edtSongWriter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Song Writer" />
+            <TextView
+                style="@style/t_song_write_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="곡 번호" />
 
-    <EditText
-        android:id="@+id/edtLyricWriter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Lyric Writer" />
+            <AutoCompleteTextView
+                android:id="@+id/edtSongNumber"
+                style="@style/t_song_write_input"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:completionThreshold="1"
+                android:hint="노래방 책자 번호를 입력하세요"
+                android:inputType="number"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
 
-    <EditText
-        android:id="@+id/edtCompany"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Company" />
+            <TextView
+                style="@style/t_song_write_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="곡 제목" />
 
-    <TextView
-        android:id="@+id/btnSave"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="SAVE"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+            <AutoCompleteTextView
+                android:id="@+id/edtSongTitle"
+                style="@style/t_song_write_input"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:completionThreshold="1"
+                android:hint="노래 이름을 입력하세요"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                style="@style/t_song_write_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="가수 이름" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edtSinger"
+                style="@style/t_song_write_input"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:completionThreshold="1"
+                android:hint="노래를 부른 가수의 이름을 입력하세요"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                style="@style/t_song_write_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="작곡가" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edtSongWriter"
+                style="@style/t_song_write_input"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:completionThreshold="1"
+                android:hint="노래의 작곡가 이름을 입력하세요"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                style="@style/t_song_write_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="작사가" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edtLyricWriter"
+                style="@style/t_song_write_input"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:completionThreshold="1"
+                android:hint="노래의 작사가 이름을 입력하세요"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                style="@style/t_song_write_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="회사명" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edtCompany"
+                style="@style/t_song_write_input"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:completionThreshold="1"
+                android:hint="금영/TJ"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+
+            <TextView
+                android:id="@+id/btnSave"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="SAVE"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

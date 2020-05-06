@@ -1,6 +1,5 @@
 package com.lonnie.chicsign.myfavoritesongs.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,12 +9,12 @@ import com.lonnie.chicsign.myfavoritesongs.model.Info
 import com.lonnie.chicsign.myfavoritesongs.databinding.ItemSongListBinding
 
 
-class RecyclerAdapter(private val context: Context) :
+class RecyclerAdapter() :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     private var dataList = mutableListOf<Info>()
 
-    fun setListData(data:MutableList<Info>){
+    fun setListData(data: MutableList<Info>) {
         dataList = data
     }
 

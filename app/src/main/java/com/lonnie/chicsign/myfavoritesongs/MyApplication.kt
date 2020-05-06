@@ -1,9 +1,12 @@
 package com.lonnie.chicsign.myfavoritesongs
 
-import android.app.Application
+import com.lonnie.chicsign.myfavoritesongs.di.DaggerAppComponent
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class MyApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
+class MyApplication : DaggerApplication() {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().create(this)
     }
+
 }

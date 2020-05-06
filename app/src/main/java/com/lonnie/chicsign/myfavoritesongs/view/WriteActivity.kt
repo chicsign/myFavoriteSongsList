@@ -41,7 +41,8 @@ class WriteActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
                 TextUtils.isEmpty(edtCompany.text) -> {
-                    Toast.makeText(applicationContext, "반주 제공 업체명을 입력하세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "반주 제공 업체명을 입력하세요.", Toast.LENGTH_SHORT)
+                        .show()
                     return@setOnClickListener
                 }
                 else -> {
